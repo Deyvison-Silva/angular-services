@@ -19,6 +19,12 @@ export class CursosComponent implements OnInit {
 
   ngOnInit(): void {
     this.cursos = this.cursosService.getCursos();
+
+    // Devido o atributo ser static a sua chamada não dependende da instancia da classe, por isso não podemos 
+    // utilizar o this e sim o proprio nome da classe para referencia-lo
+    CursosService.criouNovoCurso.subscribe(
+      curso => this.cursos.push(curso)
+    );
   }
 
 }
